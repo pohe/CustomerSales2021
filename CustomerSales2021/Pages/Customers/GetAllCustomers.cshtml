@@ -1,0 +1,78 @@
+﻿@page
+@model CustomerSales2021.Pages.Customers.GetAllCustomersModel
+@{
+    ViewData["Title"] = "GetAllCustomers";
+}
+
+
+<p>
+    <a asp-page="/Customers/Create">Create New Customer</a>
+</p>
+
+ 
+<form>
+    <p>
+        Search: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<h4 style="color:red"> List of customers</h4>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Customer Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Address
+        </th>
+
+        <th>
+            Age
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+
+    @if (Model.Customers.Count() != 0)
+    {
+        @foreach (var item in Model.Customers)
+        {
+            <tr>
+                <td>
+                    @item.CustomerId
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Address
+                </td>
+                <td>
+                    @item.Age
+                </td>
+
+                <td>
+                    <p>
+                        <a asp-page="/Sales/GetAllSales"  asp-page-handler="MySales"    asp-route-cid="@item.CustomerId">Show my Sales</a>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <a asp-page="/Sales/Create"  asp-route-id="@item.CustomerId">New Sale</a>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        <a asp-page="/Customers/Delete" asp-route-id="@item.CustomerId">Delete</a>
+                    </p>
+                </td>
+            </tr>
+        }
+    }
+</table>

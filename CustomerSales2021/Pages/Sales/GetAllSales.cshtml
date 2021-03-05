@@ -1,0 +1,71 @@
+﻿@page
+@model CustomerSales2021.Pages.Sales.GetAllSalesModel
+@{
+    ViewData["Title"] = "GetAllOrders";
+    
+}
+
+<p>
+    <a asp-page="/Sales/Create">Create New Sale</a>
+</p>
+<br />
+<h4 style="color:red "> List of sales</h4>
+<form>
+    <p>
+        Search: <input type="text" asp-for="MaxAmount" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            SaleId
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            SalesDate
+        </th>
+
+        <th>
+            Customer Id
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+
+    @if (Model.Sales.Count() != 0)
+    {
+        @foreach (var item in Model.Sales)
+        {
+            <tr>
+                <td>
+                    @item.SaleId
+                </td>
+                <td>
+                    @item.Amount
+                </td>
+                <td>
+                    @item.SalesDate
+                </td>
+                <td>
+                    @item.CustomerId
+                </td>
+                <td>
+                    @item.ProductName
+                </td>
+
+                <td>
+                    <a asp-page="EditEvent" asp-route-id="@item.CustomerId">Edit</a>|
+                    <a asp-page="DetailEvent" asp-route-id="@item.CustomerId">Details</a> |
+                    <a asp-page="Delete" asp-route-id="@item.SaleId">Delete</a>
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+

@@ -1,0 +1,46 @@
+﻿@page
+@model CustomerSales2021.Pages.Sales.CreateModel
+@{
+    ViewData["Title"] = "Create";
+    
+}
+
+<h1>Create an order </h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="None " class="text-danger">
+            </div>
+            @*<div class="form-group">
+            <label asp-for="@Model.Sale.SaleId" class="control-label"></label>
+            <input  hidden="hidden"   asp-for="@Model.Sale.SaleId" class="form-control" />
+            <span asp-validation-for="@Model.Sale.SaleId" class="text-danger"></span>
+        </div>*@
+
+            <div class="form-group">
+                <label asp-for="@Model.Sale.ProductName" class="control-label"></label>
+                <input asp-for="@Model.Sale.ProductName" class="form-control" />
+                <span asp-validation-for="@Model.Sale.ProductName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Sale.Amount" class="control-label"></label>
+                <input asp-for="@Model.Sale.Amount" class="form-control" />
+                <span asp-validation-for="@Model.Sale.Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden="hidden" asp-for="@Model.Sale..CustomerId" class="control-label"></label>
+                <input hidden="hidden" asp-for="@Model.Sale.CustomerId" class="form-control" />
+                <span asp-validation-for="@Model.Sale.CustomerId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@*<div>
+        <a asp-page="Index">Back to List</a>
+    </div>*@
